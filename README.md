@@ -66,7 +66,6 @@ email_sender.py → Email (PDF + алерты)
 ### Страница 2: «Детальный анализ»
 
 - Матрица «Города × Месяцы»
-- Топ-5 городов по среднему чеку
 - ARPU по месяцам
 - Топ-10 клиентов по выручке
 - Доля отмен по городам
@@ -154,16 +153,3 @@ python scripts/etl_pipeline.py
 ### 5. Настроить автозапуск
 
 - Создай задачу в **Планировщике задач Windows** на `run_pipeline.bat`.
-
----
-
-## 📞 Контакты
-
-**[Твоё Имя]**  
-🔗 [LinkedIn](https://linkedin.com/in/твой_профиль)  
-📧 [твой_email@mail.ru](mailto:твой_email@mail.ru)  
-💻 [GitHub](https://github.com/твой_ник)
-
----
-
-⭐ **Стек:** Python, pandas, Power BI, DAX, SMTP, Планировщик Windows
