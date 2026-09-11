@@ -57,4 +57,33 @@ def run_etl():
     return final
 
 if __name__ == "__main__":
-    run_etl()
+    final = run_etl()
+    
+    try:
+        from check_anomalies import check_anomalies, send_daily_summary
+        from email_sender import send_email_report
+        
+        # 1. Алерты + сводка (каждый день)
+        check_anomalies()
+        send_daily_summary()
+        
+        # 2. PDF-отчёт (только по понедельникам)
+        today = datetime.now().weekday()  # 0 = Пн, 6 = Вс
+        
+        if today == 0:  # Понедельник
+            pdf_path = 'powerbi/shop_dashboard.pdf'
+            if os.path.exists(pdf_path):
+                send_email_report(
+                    pdf_path,
+                    "📊 Еженедельный PDF-отчёт"
+                )
+                print("📨 PDF отправлен (понедельник)!")
+            else:
+                print(f"⚠️ PDF не найден: {pdf_path}")
+        else:
+            print(f"📅 Сегодня не понедельник (день {today}), PDF не отправляем")
+        
+        print("📨 Отчёты отправлены!")
+    except Exception as e:
+        print(f"⚠️ Ошибка: {e}")
+        traceback.print_exc()
