@@ -1,0 +1,4 @@
+Faker==40.38.0
+numpy==2.5.3
+pandas==3.0.5
+yagmail==0.16.0
